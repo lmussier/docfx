@@ -31,7 +31,7 @@ jobs:
           template: '@asyncapi/html-template@0.15.4'  #In case of template from npm, because of @ it must be in quotes
           filepath: docs/api/cc/cc.yml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
-          output: docs/apidoc/cc
+          output: docs/apidoc
 
       - uses: nikeee/docfx-action@v1.0.0
         name: Build docfx
