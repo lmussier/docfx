@@ -25,18 +25,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: nikeee/docfx-action@v1.0.0
-        name: Build docfx
-        with:
-         args: docs/docfx.json
-         
       - name: Generating AsyncAPI documentation
         uses: asyncapi/github-action-for-generator@v1
         with:
           template: '@asyncapi/html-template@0.15.4'  #In case of template from npm, because of @ it must be in quotes
           filepath: docs/api/cc/cc.yml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
-          output: docs/api/cc
+          output: docs/apidoc/cc
+
+      - uses: nikeee/docfx-action@v1.0.0
+        name: Build docfx
+        with:
+         args: docs/docfx.json
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
