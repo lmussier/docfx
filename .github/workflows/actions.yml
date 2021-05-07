@@ -30,9 +30,8 @@ jobs:
         with:
          args: docs/docfx.json
 
-    # Publish generated site using GitHub Pages
-      - uses: maxheld83/ghpages@master
-        name: Publish Documentation on GitHub Pages
-        env:
-          BUILD_DIR: docs/_site # docfx's default output directory is _site
-          GH_PAT: ${{ secrets.GH_PAT }} # See https://github.com/maxheld83/ghpages
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs/_site # The folder the action should deploy.
